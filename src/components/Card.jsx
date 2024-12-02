@@ -1,14 +1,10 @@
 import "../data/languages";
 
-export default function Card() {
+export default function Card({ title, description }) {
   return (
     <div className="card p-3 my-5">
-      <h3>Title</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, quo.
-        Placeat voluptates aliquid explicabo temporibus et, aspernatur fuga
-        doloremque eum.
-      </p>
+      <h3>{title}</h3>
+      <p>{description}</p>
     </div>
   );
 }
