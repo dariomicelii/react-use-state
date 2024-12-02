@@ -1,10 +1,11 @@
 import "../data/languages";
-import Buttons from "./Buttons";
+import Buttons from "./buttons";
 import "./Card";
 import Card from "./Card";
+import { useState } from "react";
 
 export default function Main() {
-  const languages = [
+  const [languages, setLanguages] = useState([
     {
       id: 1,
       title: "HTML",
@@ -41,30 +42,42 @@ export default function Main() {
       description:
         "ReactJS è una libreria JavaScript per costruire interfacce utente, in particolare applicazioni a pagina singola. Consente agli sviluppatori di creare componenti UI riutilizzabili e di gestire efficacemente lo stato dell'applicazione.",
     },
-  ];
+  ]);
+
+  const statusChange = (param) => {
+    const updatedLanguages = [...languages];
+    updatedLanguages[param].isOpen = !updatedLanguages[param].isOpen;
+    setLanguages(updatedLanguages);
+  };
 
   return (
     <main>
       <section>
         <div className="container">
-          {languages.map((language) => (
+          {languages.map((language, index) => (
             <Buttons
               key={language.id}
+              index={index}
               id={language.id}
               title={language.title}
               description={language.description}
+              isOpen={language.isOpen}
+              handleStatusChange={statusChange}
             />
           ))}
         </div>
       </section>
       <section>
         <div className="container">
-          {languages.map((language) => (
+          {languages.map((language, index) => (
             <Card
               key={language.id}
+              index={index}
               id={language.id}
               title={language.title}
               description={language.description}
+              isOpen={language.isOpen}
+              handleStatusChange={statusChange}
             />
           ))}
         </div>
