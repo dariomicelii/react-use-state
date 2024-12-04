@@ -1,5 +1,5 @@
 import "../data/languages";
-import Buttons from "./buttons";
+import Buttons from "./Buttons.jsx";
 import "./Card";
 import Card from "./Card";
 import { useState } from "react";
